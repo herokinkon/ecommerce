@@ -10,8 +10,10 @@ iCommerce
 └── README.md
 ```
 
-Included Libraries
+Architacture Diagram
 ================
+![image](iCommerce-architecture-diagram.png)
+
 
 How To Run On Local
 ================
