@@ -25,7 +25,7 @@ public class ProductRepositoryTest {
 	private ProductRepository repo;
 
 	@Test
-	public void whenUpdateProductPrice_thenReturnProduct() {
+	public void testUpdateProductPrice() {
 		// given
 		Product prod = repo.findById(1L).get();
 

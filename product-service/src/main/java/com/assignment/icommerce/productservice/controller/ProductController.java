@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.assignment.icommerce.productservice.dto.ProductPriceDTO;
+import com.assignment.icommerce.productservice.exception.NotFoundException;
 import com.assignment.icommerce.productservice.service.ProductService;
 
 @RestController
@@ -19,8 +20,11 @@ public class ProductController {
 	private ProductService prodService;
 
 	@PostMapping("/update-prices")
-	public void updatePrice(@RequestBody List<ProductPriceDTO> productPrices) {
-		this.prodService.updatePrices(productPrices);
+	public void updatePrice(@RequestBody List<ProductPriceDTO> productPrices) throws NotFoundException {
+		List<Long> notFoundIds = this.prodService.updatePrices(productPrices);
+		if (!notFoundIds.isEmpty()) {
+			throw new NotFoundException(notFoundIds);
+		}
 	}
 
 }

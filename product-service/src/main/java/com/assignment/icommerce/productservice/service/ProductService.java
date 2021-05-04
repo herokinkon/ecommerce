@@ -1,5 +1,6 @@
 package com.assignment.icommerce.productservice.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -26,7 +27,8 @@ public class ProductService {
 
 	private static final String PROD_PRICE_CHANNEL = "productPriceChange";
 
-	public void updatePrices(@NonNull List<ProductPriceDTO> products) {
+	public List<Long> updatePrices(@NonNull List<ProductPriceDTO> products) {
+		List<Long> notFoundIds = new ArrayList<>();
 		products.forEach(prod -> {
 			int updatedItems = repo.updatePriceForId(prod.getPrice(), prod.getProductId());
 			if (updatedItems > 0) {
@@ -37,11 +39,11 @@ public class ProductService {
 				} catch (Exception e) {
 					LOGGER.error(e.getMessage());
 				}
+			} else {
+				notFoundIds.add(prod.getProductId());
 			}
 		});
+		return notFoundIds;
 	}
 
-//	public List<ProductPriceDTO> getPrices(Long id) {
-//		template.
-//	}
 }
