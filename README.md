@@ -1,19 +1,25 @@
-Folder Structure
+Folder Structure And Libraries
 ================
 
 ```
 iCommerce
 └── eureka-server
+    |__spring-netflix-eureka-server
 └── event-store
+    |__spring-activemq
+    |__spring-data-elasticsearch
 └── gateway
+    |__spring-gateway
 └── product-service
 └── README.md
 ```
 
-Architacture Diagram
+Architacture
 ================
-![image](iCommerce-architecture-diagram.png)
+#### Event Sourcing
+Event sourcing pattern helps us records all changes in product entity and HTTP request as events. It will send asynchronous message to broker so it doesn't interrupt the main flow of application.
 
+![image](iCommerce-architecture-diagram.png)
 
 How To Run On Local
 ================
