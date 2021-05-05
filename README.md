@@ -76,7 +76,7 @@ curl -i -X GET http://localhost:8080/products/1
 ```
 
 ```bash
-curl -i -X POST http://localhost:8080/products/update-prices -d '[{"productId":1, "price": 9999}, {"productId":2, "price": 1234]'
+curl -i -X POST http://localhost:8080/products/update-prices -d '[{"productId":1, "price": 9999}, {"productId":2, "price": 1234}]'
 ```
 
 ```bash

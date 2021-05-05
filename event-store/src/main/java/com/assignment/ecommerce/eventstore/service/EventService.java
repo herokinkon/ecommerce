@@ -19,11 +19,10 @@ public class EventService {
 	private UserActivityRepository userActivitiesRepo;
 
 	public Page<UserActivity> getUserActivities(int page, int size) {
-		return userActivitiesRepo.findAll(PageRequest.of(page, size));
+		return userActivitiesRepo.findAll(PageRequest.of(page, size, Sort.Direction.DESC, "date"));
 	}
 
 	public Page<ProductPrice> getPrices(Long id, int page, int size) {
-		Sort sort = Sort.by(Sort.Direction.DESC, "date");
-		return priceHistoryRepo.findByProductId(id, PageRequest.of(page, size, sort));
+		return priceHistoryRepo.findByProductId(id, PageRequest.of(page, size, Sort.Direction.DESC, "date"));
 	}
 }
